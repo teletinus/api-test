@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}App test - {{ page_name }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col border text-center mt-5">
+            <a href="{{ path('product') }}" class="display-4 nav-link">New Product</a>
+        </div>
+        <div class="col border  text-center mt-5">
+            <a href="{{ path('sales')}}" class="display-4 nav-link">Sales</a>
+        </div>
+    </div>
+{% endblock %}

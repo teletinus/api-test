@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="/publicassets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/publicassets/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" href="/publicassets/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="/publicassets/css/style.css">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <h5 class="nav-link text-white">{{ page_name }}</h5>
+                </li>
+                {% if(is_granted('IS_AUTHENTICATED_FULLY')) %}
+                <li class="nav-iteme">
+                    <h5 class="nav-link text-white ml-5">Hello, {{app.user.username}}</h5>
+                </li>
+                {% endif %}
+            </ul>
+            {% if(is_granted('IS_AUTHENTICATED_FULLY')) %}
+            <a class="btn btn-primary float-right" href="{{ path('app_logout') }}">Logout</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+    {% block body %}{% endblock %}
+</div>
+{% block javascripts %}
+    <script type="text/javascript" src="/publicassets/js/jquery.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/publicassets/js/popper.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/publicassets/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/publicassets/js/bootstrap-datepicker.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/publicassets/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/publicassets/js/dataTables.fixedColumns.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/publicassets/js/scripts.js" crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>
