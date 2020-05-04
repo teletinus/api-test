@@ -31,7 +31,6 @@ class ApiController extends FOSRestController {
         } else {
             $data = $data = json_decode($request->getContent(), true);
         }
-//        print_r($data);die();
         $form->submit($data);
         if ($form->isSubmitted() && $form->isValid()) {
             return $this->handleView($this->view(['status' => 'ok'], Response::HTTP_CREATED));

@@ -50,9 +50,13 @@ $(document).ready(function () {
             beforeSend: function () {
             },
             success: function (data) {
-                console.log(data.tbody);
-                console.log(data.thead);
 
+                var sales_head_row = '<tr>\n\
+                                        <th colspan="2"></th>\n\
+                                        <th colspan="4" class="text-center" style="border-left:1px solid #000; border-right:1px solid #000;border-top:1px solid #000">Sales</th>\n\
+                                        <th></th>\n\
+                                    </tr>';
+                
                 var sales_thead = '<tr>';
 
                 $.each(data.thead, function (key_head, val_head) {
@@ -66,6 +70,7 @@ $(document).ready(function () {
                 });
                 sales_thead += '</tr>';
 
+                $('.sales-header').append(sales_head_row);
                 $('.sales-header').append(sales_thead);
 
                 var sales_tbody = '<tr>';
